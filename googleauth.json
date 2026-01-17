@@ -1,0 +1,9 @@
+{"web":{"client_id":"46294756080-jbvokng6ntr0vmjusifvhkui6n05n62v.apps.googleusercontent.com",
+        "project_id":"stock-483115",
+        "auth_uri":"https://accounts.google.com/o/oauth2/auth",
+        "token_uri":"https://oauth2.googleapis.com/token",
+        "auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs",
+        "client_secret":"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",
+        "javascript_origins":["http://localhost:5173"]
+    }
+}
