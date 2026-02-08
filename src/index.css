@@ -45,6 +45,12 @@
 .delay-200 { animation-delay: 0.2s; }
 .delay-300 { animation-delay: 0.3s; }
 
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
 
-
-
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
