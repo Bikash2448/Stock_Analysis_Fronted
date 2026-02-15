@@ -14,8 +14,8 @@ const api = axios.create({
 // export const logoutApi = () =>api.post('/user/logout')
 
 
-export const sendOtpApi = (payload) => api.post("/auth/send-otp", payload);
-export const verifyOtpApi = (payload) => api.post("/auth/verify-otp", payload);
-export const requestOtpApi = (payload) =>api.post("/auth/request_otp", payload);
-export const verifyOtp_ResetPassword = (payload) =>api.post("auth/verifyOtp_ResetPassword", payload);
-export const resetPasswordApi = (payload) =>api.post("auth/reset_password", payload);
+export const sendOtpApi = (payload) => api.post("/api/auth/send-otp", payload);
+export const verifyOtpApi = (payload) => api.post("/api/auth/verify-otp", payload);
+export const requestOtpApi = (payload) =>api.post("/api/auth/request_otp", payload);
+export const verifyOtp_ResetPassword = (payload) =>api.post("/api/auth/verifyOtp_ResetPassword", payload);
+export const resetPasswordApi = (payload) =>api.post("/api/auth/reset_password", payload);

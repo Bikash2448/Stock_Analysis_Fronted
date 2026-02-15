@@ -8,11 +8,11 @@ const api = axios.create({
   },
 });
 
-export const getNifty50 = () => api.get("/nifty50");
-export const getSensex = () => api.get("/sensex");
-export const getGold = () => api.get("/gold");
-export const getSilver = () => api.get("/sliver");
-export const getVix = () => api.get("/vix");
-export const getUsdInr = () => api.get("/usd_inr");
+export const getNifty50 = () => api.get("/api/nifty50");
+export const getSensex = () => api.get("/api/sensex");
+export const getGold = () => api.get("/api/gold");
+export const getSilver = () => api.get("/api/sliver");
+export const getVix = () => api.get("/api/vix");
+export const getUsdInr = () => api.get("/api/usd_inr");
 
 
