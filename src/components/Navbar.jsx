@@ -40,7 +40,7 @@ export default function Navbar() {
             <NavLink to="/dashboard" className={linkClass}>Fundamental</NavLink>
             <NavLink to="/stockchart" className={linkClass}>Chart</NavLink>
             <NavLink to="/about" className={linkClass}>About</NavLink>
-            <NavLink to="/services" className={linkClass}>Services</NavLink>
+            <NavLink to="/service" className={linkClass}>Services</NavLink>
           </div>
 
           {/* Right */}

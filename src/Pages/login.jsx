@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 import GoogleLoginButton from "../others/googleLogin";
 import toast from "react-hot-toast";
 import { useState } from "react";
@@ -6,6 +7,7 @@ import { loginApi } from "../api/userapi";
 
 export default function Login() {
   const [showForgot, setShowForgot] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -89,13 +91,33 @@ export default function Login() {
               /> */}
             </div>
 
-            <input
+            {/* <input
               name="password"
               type="password"
               required
               placeholder="Password"
               className="mt-2 w-full rounded-lg bg-black/30 px-4 py-3 text-white placeholder-gray-400 outline-none border border-white/10 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition"
-            />
+            /> */}
+            <div className="relative mt-2">
+              <input
+                name="password"
+                type={showPassword ? "text" : "password"}
+                required
+                placeholder="Password"
+                className="w-full rounded-lg bg-black/30 px-4 py-3 pr-12 text-white placeholder-gray-400 outline-none border border-white/10 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition"
+              />
+
+              <span
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-gray-600 hover:text-blue-700"
+              >
+                {showPassword ? (
+                  <EyeSlashIcon className="h-5 w-5" />
+                ) : (
+                  <EyeIcon className="h-5 w-5" />
+                )}
+              </span>
+            </div>
           </div>
 
           <button

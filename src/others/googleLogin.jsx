@@ -49,7 +49,7 @@ const GoogleLoginButton = () => {
         })
       );
 
-      toast.success(`Welcome ${res.data.user.name} 🎉`);
+      toast.success(`Welcome ${res.data.user.name}`);
       navigate("/home", { replace: true });
 
     } catch (err) {
