@@ -1,53 +1,90 @@
+// import React, { useEffect, useState } from "react";
+// import MarketTimeStatus from "../components/MarketTimeStatus";
+// import { getNifty50,getSensex,getGold,getSilver,getVix,getUsdInr, } from "../api/livedataapi";
+
+// const Dashboard = () => {
+//   const [marketData, setMarketData] = useState(null);
+//   const [sensexData,setSensexData] = useState(null);
+//   const [goldData,setGoldData] = useState(null);
+//   const [silverData,setSilverData] = useState(null);
+//   const [vixData,setVixdata] = useState(null);
+//   const [usdInrData,setUsdInrData] = useState(null);
+//   const [loading, setLoading] = useState(true);
+//   const [blockDeals, setBlockDeals] = useState([]);
+//   const [indices, setIndices] = useState([]);
+//   const [error, setError] = useState(null);
+
+//   const fetchMarketData = async () => {
+//     try {
+//       setLoading(true);
+
+//       const [
+//         niftyRes,
+//         sensexRes,
+//         goldRes,
+//         silverRes,
+//         vixRes,
+//         usdInrRes,
+//       ] = await Promise.all([
+//         getNifty50(),
+//         getSensex(),
+//         getGold(),
+//         getSilver(),
+//         getVix(),
+//         getUsdInr(),
+//       ]);
+
+//       setMarketData(niftyRes.data);
+//       setSensexData(sensexRes.data);
+//       setGoldData(goldRes.data.gold);
+//       setSilverData(silverRes.data.silver);
+//       setVixdata(vixRes.data);
+//       setUsdInrData(usdInrRes.data.usd_inr);
+
+//     } catch (error) {
+//       console.error("Market API Error:", error.response?.data || error.message);
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
 import React, { useEffect, useState } from "react";
 import MarketTimeStatus from "../components/MarketTimeStatus";
-import { getNifty50,getSensex,getGold,getSilver,getVix,getUsdInr, } from "../api/livedataapi";
+import { getDashboard } from "../api/livedataapi.js";
 
 const Dashboard = () => {
   const [marketData, setMarketData] = useState(null);
-  const [sensexData,setSensexData] = useState(null);
-  const [goldData,setGoldData] = useState(null);
-  const [silverData,setSilverData] = useState(null);
-  const [vixData,setVixdata] = useState(null);
-  const [usdInrData,setUsdInrData] = useState(null);
+  const [sensexData, setSensexData] = useState(null);
+  const [goldData, setGoldData] = useState(null);
+  const [silverData, setSilverData] = useState(null);
+  const [vixData, setVixData] = useState(null);
+  const [usdInrData, setUsdInrData] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [blockDeals, setBlockDeals] = useState([]);
-  const [indices, setIndices] = useState([]);
   const [error, setError] = useState(null);
+  const [indices, setIndices] = useState([]);
+  const [blockDeals, setBlockDeals] = useState([]);
 
   const fetchMarketData = async () => {
     try {
       setLoading(true);
 
-      const [
-        niftyRes,
-        sensexRes,
-        goldRes,
-        silverRes,
-        vixRes,
-        usdInrRes,
-      ] = await Promise.all([
-        getNifty50(),
-        getSensex(),
-        getGold(),
-        getSilver(),
-        getVix(),
-        getUsdInr(),
-      ]);
+      const res = await getDashboard();
+      console.log("res dash",res)
+      const data = res.data;
 
-      setMarketData(niftyRes.data);
-      setSensexData(sensexRes.data);
-      setGoldData(goldRes.data.gold);
-      setSilverData(silverRes.data.silver);
-      setVixdata(vixRes.data);
-      setUsdInrData(usdInrRes.data.usd_inr);
+      setMarketData(data.nifty50);
+      setSensexData(data.sensex);
+      setGoldData(data.gold);
+      setSilverData(data.silver);
+      setVixData(data.vix);
+      setUsdInrData(data.usd_inr);
 
     } catch (error) {
       console.error("Market API Error:", error.response?.data || error.message);
+      setError("Failed to load market data");
     } finally {
       setLoading(false);
     }
   };
-
   const fetchIndices = async () => {
     try {
       setError(null);
