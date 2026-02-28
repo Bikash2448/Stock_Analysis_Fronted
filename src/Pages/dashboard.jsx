@@ -1,52 +1,3 @@
-// import React, { useEffect, useState } from "react";
-// import MarketTimeStatus from "../components/MarketTimeStatus";
-// import { getNifty50,getSensex,getGold,getSilver,getVix,getUsdInr, } from "../api/livedataapi";
-
-// const Dashboard = () => {
-//   const [marketData, setMarketData] = useState(null);
-//   const [sensexData,setSensexData] = useState(null);
-//   const [goldData,setGoldData] = useState(null);
-//   const [silverData,setSilverData] = useState(null);
-//   const [vixData,setVixdata] = useState(null);
-//   const [usdInrData,setUsdInrData] = useState(null);
-//   const [loading, setLoading] = useState(true);
-//   const [blockDeals, setBlockDeals] = useState([]);
-//   const [indices, setIndices] = useState([]);
-//   const [error, setError] = useState(null);
-
-//   const fetchMarketData = async () => {
-//     try {
-//       setLoading(true);
-
-//       const [
-//         niftyRes,
-//         sensexRes,
-//         goldRes,
-//         silverRes,
-//         vixRes,
-//         usdInrRes,
-//       ] = await Promise.all([
-//         getNifty50(),
-//         getSensex(),
-//         getGold(),
-//         getSilver(),
-//         getVix(),
-//         getUsdInr(),
-//       ]);
-
-//       setMarketData(niftyRes.data);
-//       setSensexData(sensexRes.data);
-//       setGoldData(goldRes.data.gold);
-//       setSilverData(silverRes.data.silver);
-//       setVixdata(vixRes.data);
-//       setUsdInrData(usdInrRes.data.usd_inr);
-
-//     } catch (error) {
-//       console.error("Market API Error:", error.response?.data || error.message);
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
 import React, { useEffect, useState } from "react";
 import MarketTimeStatus from "../components/MarketTimeStatus";
 import { getDashboard } from "../api/livedataapi.js";
@@ -69,14 +20,14 @@ const Dashboard = () => {
 
       const res = await getDashboard();
       console.log("res dash",res)
-      const data = res.data;
+      const data = res.data.data;
 
-      setMarketData(data.nifty50);
+      setMarketData(data.nifty);
       setSensexData(data.sensex);
       setGoldData(data.gold);
       setSilverData(data.silver);
       setVixData(data.vix);
-      setUsdInrData(data.usd_inr);
+      setUsdInrData(data.usd?.usd_inr);
 
     } catch (error) {
       console.error("Market API Error:", error.response?.data || error.message);
@@ -143,20 +94,6 @@ const Dashboard = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-black text-white">
 
-      {/* Top Navbar */}
-      {/* <header className="flex items-center justify-between px-6 py-4 border-b border-white/10">
-        <h1 className="text-2xl font-bold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
-          Nandi
-        </h1>
-
-        <button
-          onClick={() => navigate("/login")}
-          className="px-5 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-blue-500/40"
-        >
-          🔐 Login
-        </button>
-      </header> */}
-
       {/* Main Content */}
       <main className="px-6 py-8">
         <div className="flex justify-center md:justify-start items-center w-full md:ml-4"><MarketTimeStatus /></div>
@@ -179,30 +116,6 @@ const Dashboard = () => {
             className="rounded-xl shadow-2xl opacity-90 hover:scale-105 transition duration-500"
           />
         </section>
-
-        {/* <section className="grid md:grid-cols-2 gap-6 items-center p-6 bg-gray-900 rounded-xl shadow-xl">
-          <article className="flex flex-col justify-center items-center md:items-start space-y-3">
-            <MarketTimeStatus />
-
-            <h2 className="text-2xl md:text-3xl font-extrabold leading-snug text-white">
-              Track Markets <br />
-              <span className="text-blue-400">Trade Smarter</span>
-            </h2>
-
-            <p className="text-gray-400 text-sm md:text-base max-w-sm">
-              Real-time stock tracking, market insights, and portfolio analytics for modern traders.
-            </p>
-          </article>
-
-          <figure className="flex justify-center md:justify-end">
-            <img
-              src="https://4kwallpapers.com/images/walls/thumbs_3t/13813.png"
-              alt="Stock chart"
-              className="w-48 md:w-64 rounded-xl shadow-2xl object-cover transition-transform duration-500 hover:scale-105 opacity-90"
-            />
-          </figure>
-        </section> */}
-
 
         {/* Market Cards */}
         <section className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -253,41 +166,6 @@ const Dashboard = () => {
               </span>
             )}
           </div>
-
-          {/* High */}
-          {/* <div className="bg-white/5 backdrop-blur-lg rounded-xl p-5 border border-yellow-500/20">
-            <h3 className="text-lg font-semibold">{goldData?.name}</h3>
-            <p className="mt-2 text-2xl font-bold">₹{goldData?.last?.toLocaleString()}</p>
-            <span
-              className={`text-sm font-semibold ${
-                goldData?.pointsChange < 0 ? "text-red-400" : "text-green-400"
-              }`}
-            >
-              {goldData?.pointsChange > 0 ? "+" : ""}
-              {goldData?.pointsChange?.toLocaleString()} (
-              {goldData?.percentChange?.toFixed(2)}%)
-            </span>
-          </div> */}
-
-          {/* Low */}
-          {/* <div className="bg-gray-700/20 backdrop-blur-lg rounded-xl p-5 border border-gray-500/20">
-            <h3 className="text-lg font-semibold">{silverData?.name ?? "SILVER"}</h3>
-
-            <p className="mt-2 text-2xl font-bold">
-              ₹{silverData?.last?.toLocaleString() ?? "—"}
-            </p>
-
-            <span
-              className={`text-sm font-semibold ${
-                silverData?.pointsChange < 0 ? "text-red-400" : "text-green-400"
-              }`}
-            >
-              {silverData?.pointsChange > 0 ? "+" : ""}
-              {silverData?.pointsChange?.toLocaleString() ?? "—"} (
-              {silverData?.percentChange?.toFixed(2) ?? "—"}%)
-            </span>
-          </div> */}
-          {/* vix data */}
 
           <div className="bg-gray-700/20 backdrop-blur-lg rounded-xl p-5 border border-gray-500/20">
             <h3 className="text-lg font-semibold">
