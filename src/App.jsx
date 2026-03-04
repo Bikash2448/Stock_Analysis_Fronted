@@ -4,7 +4,7 @@ import Login from "./Pages/login";
 import SignUp from "./Pages/signup";
 import ForgotPasswordModal from "./Pages/forgetPasswordpage";
 import Notfoundpage from "./others/notfoundpage";
-
+import StockGraph from "./Pages/stockGraph";
 import Dashboard from "./Pages/dashboard";
 import StockChartPage from "./Pages/stockChart";
 import UserHome from "./Pages/userHomePage";
@@ -44,7 +44,7 @@ function App() {
 
         <Route element={<AppLayout />}>
           <Route path="/home" element={<Dashboard />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard" element={<StockGraph />} />
           <Route path="/stockchart" element={<StockChartPage />} />
           <Route path="/about" element={<About />} />
           <Route path="/service" element={<Service />} />

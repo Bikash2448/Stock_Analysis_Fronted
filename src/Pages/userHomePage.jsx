@@ -59,7 +59,8 @@ export default function UserHome() {
           <div className="relative flex justify-center items-center">
             <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/30 to-purple-500/30 rounded-full blur-xl" />
             <img
-              src="https://brogen.in/cdn/shop/files/88inchsizeFrame_7.png?v=1727872708"
+              // src="https://brogen.in/cdn/shop/files/88inchsizeFrame_7.png?v=1727872708"
+              src = "https://thumbs.dreamstime.com/b/bull-silhouette-candlestick-chart-trading-signals-383576613.jpg"
               alt="Nandi – Market Discipline & Strength"
               className="relative w-[320px] h-[320px] rounded-full object-cover border border-white/10 animate-float"
             />

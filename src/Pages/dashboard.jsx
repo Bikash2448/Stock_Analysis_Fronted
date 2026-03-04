@@ -20,13 +20,13 @@ const Dashboard = () => {
 
       const res = await getDashboard();
       console.log("res dash",res)
-      const data = res.data.data;
+      const data = res.data?.data;
 
-      setMarketData(data.nifty);
-      setSensexData(data.sensex);
-      setGoldData(data.gold);
-      setSilverData(data.silver);
-      setVixData(data.vix);
+      setMarketData(data?.nifty);
+      setSensexData(data?.sensex);
+      setGoldData(data?.gold);
+      setSilverData(data?.silver);
+      setVixData(data?.vix);
       setUsdInrData(data.usd?.usd_inr);
 
     } catch (error) {
