@@ -3,6 +3,7 @@ import MarketStats from "../components/MarketStats";
 import MarketNews from "../components/MarketNews";
 import StockSelector from "../components/StockSelector";
 import StockChart from "../components/Chart/StockChart";
+import SMC_1 from "../components/SMC_1";
 
 export default function StockChartPage() {
   const menu = ["Dashboard", "Markets", "Watchlist", "Portfolio", "Orders"];
@@ -83,7 +84,8 @@ export default function StockChartPage() {
 
         {/* ================= MARKETS ================= */}
         {activeMenu === "Markets" && (
-          <div className="text-xl font-bold">Markets Section</div>
+          // <div className="text-xl font-bold">Markets Section</div>
+          <SMC_1/>
         )}
 
         {/* ================= WATCHLIST ================= */}

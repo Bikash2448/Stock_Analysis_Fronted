@@ -37,8 +37,8 @@ export default function Navbar() {
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-6 text-sm font-medium uppercase">
             <NavLink to="/home" className={linkClass}>Home</NavLink>
-            <NavLink to="/dashboard" className={linkClass}>Fundamental</NavLink>
-            <NavLink to="/stockchart" className={linkClass}>Chart</NavLink>
+            <NavLink to="/dashboard" className={linkClass}>Chart</NavLink>
+            <NavLink to="/stockchart" className={linkClass}>Fundamental</NavLink>
             <NavLink to="/about" className={linkClass}>About</NavLink>
             <NavLink to="/service" className={linkClass}>Services</NavLink>
           </div>

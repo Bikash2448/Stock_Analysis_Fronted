@@ -6,7 +6,7 @@ import {
 } from "lightweight-charts";
 import { getStockChart } from "../services/stockService";
 
-export default function StockChart({ symbol }) {
+export default function StockChart({ symbol, onDataLoaded}) {
   const containerRef = useRef(null);
   const chartRef = useRef(null);
   const candleRef = useRef(null);
@@ -147,7 +147,8 @@ export default function StockChart({ symbol }) {
 
       candleSeries.setData(candles);
       volumeSeries.setData(volume);
-
+      // send raw data to parent
+      onDataLoaded(raw);
       applyTimeframe(candles);
     };
 
